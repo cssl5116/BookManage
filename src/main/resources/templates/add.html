@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/add}">
+    <table>
+        <thead>
+        <tr>
+            <td>
+                <h2>新增图书信息</h2>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>图书名称：</td>
+            <td><input type="text" name="bName"/></td>
+        </tr>
+        <tr>
+            <td>图书作者：</td>
+            <td><input type="text" name="bAuthor"/></td>
+        </tr>
+        <tr>
+            <td>购买日期：</td>
+            <td><input type="text" name="bTime"/>yyyy-MM-dd格式</td>
+        </tr>
+        <tr>
+            <td>图书类别：</td>
+            <td>
+                <select name="bType">
+                    <option value="0">计算机/软件</option>
+                    <option value="1">小说/文摘</option>
+                    <option value="2">杂项</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>
+                <input type="submit" value="增加图书"/>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</form>
+</body>
+</html>
