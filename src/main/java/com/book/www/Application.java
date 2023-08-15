@@ -1,4 +1,4 @@
-package com.leave.www;
+package com.book.www;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>结果页</title>
+</head>
+<body>
+<center>
+  <div class="msg" th:text="${session.msg}"></div>
+  <div class="time"></div>
+</center>
+<script>
+  window.onload = function () {
+    // 倒计时,三秒后跳转
+    let time = 3
+    setInterval(() => {
+      time--
+      if (time === 0) {
+        window.location.href = '/'
+      }
+      document.querySelector('.time').innerHTML = `操作成功,${time}秒后跳转首页`
+    }, 1000)
+  }
+</script>
+</body>
+</html>

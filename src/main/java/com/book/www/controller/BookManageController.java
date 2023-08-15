@@ -4,12 +4,11 @@ import com.book.www.entity.Bookmanage;
 import com.book.www.service.BookmanageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -21,7 +20,9 @@ public class BookManageController {
     @RequestMapping("/select")
     @ResponseBody
     public List<Bookmanage> select() {
-        return bookmanageService.list();
+        List<Bookmanage> list = bookmanageService.list();
+        System.out.println(list);
+        return list;
     }
     @GetMapping("/")
     public String index() {
@@ -40,5 +41,15 @@ public class BookManageController {
         } else {
             return "redirect:/add";
         }
+    }
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id, HttpServletRequest request){
+        String msg=bookmanageService.removeById(id)?"删除成功":"删除失败";
+        request.getSession().setAttribute("msg",msg);
+        return "redirect:/result.html";
+    }
+    @GetMapping("/result.html")
+    public String toResult() {
+        return "result";
     }
 }

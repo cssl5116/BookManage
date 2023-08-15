@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="jquery-1.8.3.min.js"></script>
+    <script src="/jquery-1.8.3.min.js"></script>
     <script>
         $(function () {
             $.getJSON("select", function (data) {
                 if (data != null) {
                     $.each(data, function (i, e) {
+                        console.log(e)
                         let tr = "<tr";
                         if (i % 2 !== 0) {
                             tr += " class='bgColor'";
                         }
-                        tr += "><td>" + e.bName
-                            + "</td><td>" + e.bAuthor
-                            + "</td><td>" + e.bTime + "</td>";
-                        if (e.bType === 0) {
+                        tr += "><td>" + e.bname
+                            + "</td><td>" + e.bauthor
+                            + "</td><td>" + e.btime + "</td>";
+                        if (e.btype === 0) {
                             tr += "<td>计算机/软件</td>";
-                        } else if (e.bType === 1) {
+                        } else if (e.btype === 1) {
                             tr += "<td>小说/文稿</td>";
                         } else {
                             tr += "<td>杂项</td>";
                         }
-                        tr += "<td><a href='javascript:void(0)' onclick='del(" + e.bId + ")'>删除</a></td></tr>";
+                        tr += "<td><a href='javascript:void(0)' onclick='del(" + e.bid + ")'>删除</a></td></tr>";
+                        $("table").append(tr);
                     })
                 }
             })
