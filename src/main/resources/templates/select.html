@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        $(function () {
+            $.getJSON("select", function (data) {
+                if (data != null) {
+                    $.each(data, function (i, e) {
+                        let tr = "<tr";
+                        if (i % 2 !== 0) {
+                            tr += " class='bgColor'";
+                        }
+                        tr += "><td>" + e.bName
+                            + "</td><td>" + e.bAuthor
+                            + "</td><td>" + e.bTime + "</td>";
+                        if (e.bType === 0) {
+                            tr += "<td>计算机/软件</td>";
+                        } else if (e.bType === 1) {
+                            tr += "<td>小说/文稿</td>";
+                        } else {
+                            tr += "<td>杂项</td>";
+                        }
+                        tr += "<td><a href='javascript:void(0)' onclick='del(" + e.bId + ")'>删除</a></td></tr>";
+                    })
+                }
+            })
+        })
+
+        function del(id) {
+            location.href = "/delete/" + id;
+        }
+    </script>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h2>图书信息</h2>
+    <table>
+        <tr align="center" style="background-color: green">
+            <td width="150px">图书名称</td>
+            <td width="80px">图书作者</td>
+            <td width="100px">购买时间</td>
+            <td width="120px">图书分类</td>
+            <td width="80px">操作</td>
+        </tr>
+    </table>
+    <a href="add.html"></a>
+</center>
+</body>
+</html>
